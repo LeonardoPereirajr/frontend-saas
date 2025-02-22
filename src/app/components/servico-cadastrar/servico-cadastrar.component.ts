@@ -16,6 +16,7 @@ export class ServicoCadastrarComponent {
     clienteId: '',
     nomeCliente: '',
     tipoServico: 'ASSESSORIA',
+    descricao: '',
 
     valorHora: 0,
     horasMensais: 0,
