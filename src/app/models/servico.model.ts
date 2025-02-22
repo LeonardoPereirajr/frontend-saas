@@ -3,6 +3,7 @@ export interface Servico {
     clienteId?: string;
     nomeCliente: string;             
     tipoServico?: 'STORYMAKER' | 'ASSESSORIA';
+    descricao?: string;
   
     // para assessoria
     valorHora?: number;

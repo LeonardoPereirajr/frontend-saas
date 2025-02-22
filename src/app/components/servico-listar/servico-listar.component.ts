@@ -9,7 +9,8 @@ import { ServicoService } from '../../services/servico.service';
 })
 export class ServicoListarComponent implements OnInit {
   servicos: Servico[] = [];
-  isModalOpen = false; 
+  isModalOpen = false;  
+  descricaoSelecionada: string = ''; 
 
   constructor(private servicoService: ServicoService) {}
 
@@ -29,11 +30,13 @@ export class ServicoListarComponent implements OnInit {
     );
   }
 
-  abrirModal(): void {
+  abrirModal(descricao: string): void {
+    this.descricaoSelecionada = descricao;
     this.isModalOpen = true;
   }
 
   fecharModal(): void {
     this.isModalOpen = false;
+    this.descricaoSelecionada = '';
   }
 }

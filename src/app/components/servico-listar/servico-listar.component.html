@@ -51,6 +51,7 @@
             <th class="px-3 py-2">Deslocamento (Km)</th>
             <th class="px-3 py-2">Custo por Km</th>
             <th class="px-3 py-2">Total Deslocamento</th>
+            <th class="px-3 py-2">Descrição</th>
           </tr>
         </thead>
         <tbody>
@@ -64,9 +65,23 @@
             <td class="px-3 py-2">{{ servico.deslocamentoKm }}</td>
             <td class="px-3 py-2">{{ servico.custoPorKm | currency:'BRL' }}</td>
             <td class="px-3 py-2 font-bold text-green-600">{{ servico.totalCustoDeslocamento | currency:'BRL' }}</td>
+            <td class="px-3 py-2">
+              <button (click)="abrirModal(servico.descricao)" class="text-blue-500 hover:text-blue-700">
+                <span class="material-icons text-sm">info</span>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-</div>
+      <!-- MODAL PARA EXIBIR A DESCRIÇÃO -->
+      <div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+          <h3 class="text-lg font-semibold mb-4">Descrição do Serviço</h3>
+          <p class="text-gray-700">{{ descricaoSelecionada }}</p>
+          <div class="mt-4 flex justify-end">
+            <button (click)="fecharModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
