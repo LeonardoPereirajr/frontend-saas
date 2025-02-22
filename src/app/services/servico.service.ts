@@ -7,8 +7,7 @@ import { Servico } from '../models/servico.model';
   providedIn: 'root'
 })
 export class ServicoService {
-  private apiUrl = 'http://localhost:8080/servicos'; // Ajuste conforme backend
-
+  private apiUrl = 'http://localhost:8080/servicos'; 
   constructor(private http: HttpClient) {}
 
   listarTodos(): Observable<Servico[]> {

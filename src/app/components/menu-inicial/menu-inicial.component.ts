@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-inicial.component.css']
 })
 export class MenuInicialComponent {
-  // Componente simples, sem lógica adicional.
 }

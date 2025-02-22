@@ -66,7 +66,7 @@ export class ClienteListarComponent implements OnInit {
     this.clienteService.deletar(cliente.id).subscribe(
       () => {
         alert('Cliente deletado com sucesso!');
-        this.obterClientes(); // Atualiza a lista após a exclusão
+        this.obterClientes(); 
       },
       (erro) => {
         console.error('Erro ao deletar cliente:', erro);

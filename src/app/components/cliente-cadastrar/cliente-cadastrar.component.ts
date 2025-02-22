@@ -27,7 +27,6 @@ export class ClienteCadastrarComponent {
     }
   };
 
-  // Controla exibição do contato (ex. se for PJ, etc.)
   mostrarContato: boolean = false;
 
   constructor(private clienteService: ClienteService, private router: Router, private location: Location) {}
@@ -37,11 +36,9 @@ export class ClienteCadastrarComponent {
   }
 
   aoSalvar(): void {
-    // Chama o service para salvar
     this.clienteService.salvar(this.novoCliente).subscribe(
       (clienteSalvo) => {
         console.log('Cliente cadastrado com sucesso:', clienteSalvo);
-        // Após cadastrar, podemos navegar de volta para a listagem ou outra página
         this.router.navigate(['/clientes/listar']);
       },
       (erro) => {
@@ -51,6 +48,6 @@ export class ClienteCadastrarComponent {
   }
 
   voltar(): void {
-    this.location.back(); // Volta para a página anterior
+    this.location.back(); 
   }
 }
