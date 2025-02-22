@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,24 +12,16 @@ import { ServicoCadastrarComponent } from './components/servico-cadastrar/servic
 import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ClienteListarComponent,
-    ClienteCadastrarComponent,
-    ServicoListarComponent,
-    ServicoCadastrarComponent,
-    MenuInicialComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ClienteListarComponent,
+        ClienteCadastrarComponent,
+        ServicoListarComponent,
+        ServicoCadastrarComponent,
+        MenuInicialComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
