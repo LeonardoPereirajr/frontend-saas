@@ -2,6 +2,26 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
 
+Componentes principais:
+
+ClienteListarComponent
+ClienteCadastrarComponent
+ServicoListarComponent
+ServicoCadastrarComponent
+MenuInicialComponent
+
+The ClienteService has endpoints for managing clients:
+
+GET /clientes: List clients (used in ClienteListarComponent and ServicoCadastrarComponent).
+POST /clientes: Create a client (used in ClienteCadastrarComponent).
+PUT /clientes/{id}: Update a client (used in ClienteListarComponent).
+DELETE /clientes/{id}: Delete a client (used in ClienteListarComponent).
+
+The ServicoService is for handling services:
+
+GET /servicos: List services (used in ServicoListarComponent).
+POST /servicos: Create a service (used in `ServicoCadastrarComponent
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
