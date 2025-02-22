@@ -5,9 +5,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Componentes principais:
 
 ClienteListarComponent
+
 ClienteCadastrarComponent
+
 ServicoListarComponent
+
 ServicoCadastrarComponent
+
 MenuInicialComponent
 
 The ClienteService has endpoints for managing clients:
