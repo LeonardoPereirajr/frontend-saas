@@ -17,14 +17,20 @@ MenuInicialComponent
 The ClienteService has endpoints for managing clients:
 
 GET /clientes: List clients (used in ClienteListarComponent and ServicoCadastrarComponent).
+
 POST /clientes: Create a client (used in ClienteCadastrarComponent).
+
 PUT /clientes/{id}: Update a client (used in ClienteListarComponent).
+
 DELETE /clientes/{id}: Delete a client (used in ClienteListarComponent).
+
 
 The ServicoService is for handling services:
 
 GET /servicos: List services (used in ServicoListarComponent).
+
 POST /servicos: Create a service (used in `ServicoCadastrarComponent
+
 
 ## Development server
 
