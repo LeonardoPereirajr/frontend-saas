@@ -1,0 +1,33 @@
+<h2 class="text-2xl font-bold mb-4">Lista de Serviços</h2>
+
+<!-- Exemplo simples sem modal -->
+<table class="min-w-full border-collapse text-sm">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border p-2">ID</th>
+      <th class="border p-2">Cliente ID</th>
+      <th class="border p-2">Tipo de Serviço</th>
+      <!-- Exemplo de campos para Assessoria -->
+      <th class="border p-2">Valor Hora</th>
+      <th class="border p-2">Horas Mensais</th>
+      <th class="border p-2">Valor Mensal</th>
+      <!-- Exemplo de campos para Storymaker -->
+      <th class="border p-2">Deslocamento (Km)</th>
+      <th class="border p-2">Custo por Km</th>
+      <th class="border p-2">Total Deslocamento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let servico of servicos" class="hover:bg-gray-50">
+      <td class="border p-2">{{ servico.id }}</td>
+      <td class="border p-2">{{ servico.clienteId }}</td>
+      <td class="border p-2">{{ servico.tipoServico }}</td>
+      <td class="border p-2">{{ servico.valorHora }}</td>
+      <td class="border p-2">{{ servico.horasMensais }}</td>
+      <td class="border p-2">{{ servico.valorMensal }}</td>
+      <td class="border p-2">{{ servico.deslocamentoKm }}</td>
+      <td class="border p-2">{{ servico.custoPorKm }}</td>
+      <td class="border p-2">{{ servico.totalCustoDeslocamento }}</td>
+    </tr>
+  </tbody>
+</table>

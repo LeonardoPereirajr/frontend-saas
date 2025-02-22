@@ -1,0 +1,43 @@
+<!-- BOTÃO PARA ABRIR A MODAL -->
+<button (click)="abrirModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Ver Lista de Clientes
+</button>
+
+<!-- MODAL OVERLAY (Exibido somente se isModalOpen == true) -->
+<div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4" >
+  <!-- MODAL CONTAINER -->
+  <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-4xl relative transition-all" >
+    <!-- BOTÃO DE FECHAR -->
+    <button (click)="fecharModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+      ✕
+    </button>
+
+    <h2 class="text-2xl font-bold mb-4">Lista de Clientes</h2>
+
+    <!-- TABELA DE CLIENTES -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-2">Nome</th>
+            <th class="border p-2">CPF/CNPJ</th>
+            <th class="border p-2">Email</th>
+            <th class="border p-2">Telefone</th>
+            <th class="border p-2">Cidade</th>
+            <th class="border p-2">Tipo Serviço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes" class="hover:bg-gray-100">
+            <td class="border p-2">{{ cliente.nome }}</td>
+            <td class="border p-2">{{ cliente.cpfCnpj }}</td>
+            <td class="border p-2">{{ cliente.email }}</td>
+            <td class="border p-2">{{ cliente.telefone }}</td>
+            <td class="border p-2">{{ cliente.cidade }}</td>
+            <td class="border p-2">{{ cliente.tipoServico }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
