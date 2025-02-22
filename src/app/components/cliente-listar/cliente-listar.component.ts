@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../../models/cliente.model';
+import { Cliente } from '../../models/cliente.model'; // Apenas importando como tipo
 import { ClienteService } from '../../services/cliente.service';
 
 @Component({
@@ -10,12 +10,21 @@ import { ClienteService } from '../../services/cliente.service';
 export class ClienteListarComponent implements OnInit {
   clientes: Cliente[] = [];
   isModalOpen = false; 
-
+  clienteEdit: Cliente = {} as Cliente;
+  isEditModalOpen = false;
+  
   constructor(private clienteService: ClienteService) {}
+
 
   ngOnInit(): void {
     this.obterClientes();
   }
+
+  editarCliente(cliente: Cliente): void {
+    this.clienteEdit = { ...cliente };
+    this.isEditModalOpen = true;
+  }
+
 
   obterClientes(): void {
     this.clienteService.listarTodos().subscribe(
@@ -34,6 +43,35 @@ export class ClienteListarComponent implements OnInit {
   }
 
   fecharModal(): void {
-    this.isModalOpen = false;
+    this.isEditModalOpen = false; 
+    this.clienteEdit = {} as Cliente; 
   }
+  atualizarCliente(): void {
+    this.clienteService.atualizar(this.clienteEdit).subscribe(
+      () => {
+        alert('Cliente atualizado com sucesso!');
+        this.fecharModal();
+        this.obterClientes(); 
+      },
+      (erro) => {
+        console.error('Erro ao atualizar cliente:', erro);
+        alert('Erro ao atualizar cliente!');
+      }
+    );
+  }
+  deletarCliente(cliente: Cliente): void {
+    if (!confirm(`Deseja realmente deletar o cliente ${cliente.nome}?`)) {
+      return;
+    }
+    this.clienteService.deletar(cliente.id).subscribe(
+      () => {
+        alert('Cliente deletado com sucesso!');
+        this.obterClientes(); // Atualiza a lista após a exclusão
+      },
+      (erro) => {
+        console.error('Erro ao deletar cliente:', erro);
+        alert('Erro ao deletar cliente!');
+      }
+    );
+  }  
 }

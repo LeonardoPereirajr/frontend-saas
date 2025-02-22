@@ -14,6 +14,7 @@ import { ClienteService } from '../../services/cliente.service';
 export class ServicoCadastrarComponent {
   novoServico: Servico = {
     clienteId: '',
+    nomeCliente: '',
     tipoServico: 'ASSESSORIA',
 
     valorHora: 0,
@@ -49,19 +50,18 @@ export class ServicoCadastrarComponent {
   }
 
   aoSalvar(): void {
-    this.servicoService.salvar(this.novoServico).subscribe(
-      (servicoSalvo) => {
-        console.log('Serviço cadastrado com sucesso:', servicoSalvo);
-        // Após cadastrar, podemos navegar para listagem de serviços
-        this.router.navigate(['/servicos/listar']);
-      },
-      (erro) => {
-        console.error('Erro ao cadastrar serviço:', erro);
-      }
-    );
+    if (!this.novoServico.clienteId) {
+      alert("Selecione um cliente antes de salvar!");
+      return;
+    }
+  
+    this.servicoService.salvar(this.novoServico).subscribe(() => {
+      alert('Serviço cadastrado com sucesso!');
+    });
   }
+  
 
   voltar(): void {
-    this.location.back(); // Volta para a página anterior
+    this.location.back(); 
   }
 }

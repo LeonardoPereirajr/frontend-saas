@@ -9,7 +9,7 @@ import { ServicoService } from '../../services/servico.service';
 })
 export class ServicoListarComponent implements OnInit {
   servicos: Servico[] = [];
-  isModalOpen = false; // Caso queira exibir numa modal (opcional)
+  isModalOpen = false; 
 
   constructor(private servicoService: ServicoService) {}
 

@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}",   
-    "./tailadmin-free-tailwind-dashboard-template-main/**/*.{html,ts}",
+    "./src/**/*.{html,ts}",  
   ],
   theme: {
-    extend: {},
+    extend: {
+      zIndex: {
+        '1': '1', 
+      }
+    },
   },
   plugins: [],
 };

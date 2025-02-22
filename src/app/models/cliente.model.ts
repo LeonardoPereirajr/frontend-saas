@@ -15,4 +15,8 @@ export interface Cliente {
       telefone?: string;
     };
   }
+
+  export interface ClienteResponse {
+    content: Cliente[];
+  }
   

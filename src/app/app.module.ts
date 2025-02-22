@@ -10,6 +10,7 @@ import { ClienteCadastrarComponent } from './components/cliente-cadastrar/client
 import { ServicoListarComponent } from './components/servico-listar/servico-listar.component';
 import { ServicoCadastrarComponent } from './components/servico-cadastrar/servico-cadastrar.component';
 import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,15 @@ import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.com
     ClienteCadastrarComponent,
     ServicoListarComponent,
     ServicoCadastrarComponent,
-    MenuInicialComponent
+    MenuInicialComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

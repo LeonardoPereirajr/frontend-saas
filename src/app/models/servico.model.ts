@@ -1,6 +1,7 @@
 export interface Servico {
     id?: string;
-    clienteId?: string;              
+    clienteId?: string;
+    nomeCliente: string;             
     tipoServico?: 'STORYMAKER' | 'ASSESSORIA';
   
     // para assessoria

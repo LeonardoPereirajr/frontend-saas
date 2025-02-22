@@ -1,23 +1,48 @@
-<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
-
-    <h1 class="text-3xl font-bold mb-8">Menu Inicial</h1>
-  
-    <div class="grid grid-cols-2 gap-4">
-      <button routerLink="/clientes/listar" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">
-        Listar Clientes
-      </button>
-  
-      <button routerLink="/clientes/cadastrar" class="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700">
-        Cadastrar Cliente
-      </button>
-  
-      <button routerLink="/servicos/listar" class="bg-indigo-600 text-white px-6 py-3 rounded hover:bg-indigo-700">
-        Listar Serviços
-      </button>
-  
-      <button routerLink="/servicos/cadastrar" class="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700">
-        Cadastrar Serviço
-      </button>
-    </div>
-  
+<div class="relative h-screen w-full">
+  <!-- Imagem de Fundo -->
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/casal.jpg');">
+    <div class="absolute inset-0 bg-black/40"></div> <!-- Sombra para melhor contraste -->
   </div>
+
+  <!-- Sidebar (Menu Lateral Fixo) -->
+  <aside class="w-64 bg-white shadow-md h-full flex flex-col fixed left-0 top-0 z-20">
+    <div class="p-4 text-xl font-bold text-gray-700">
+      <span class="text-blue-600">Admin</span> Dashboard
+    </div>
+
+    <nav class="flex-1">
+      <ul class="space-y-2 p-4">
+        <li>
+          <a routerLink="/clientes/listar" class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+            <span class="material-icons">people</span>
+            <span>Lista de Clientes</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicos/listar" class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+            <span class="material-icons">build</span>
+            <span>Lista de Serviços</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/clientes/cadastrar" class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg bg-gray-200">
+            <span class="material-icons">person_add</span>
+            <span>Cadastrar Cliente</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicos/cadastrar" class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg hover:bg-gray-200">
+            <span class="material-icons">add_circle</span>
+            <span>Cadastrar Serviço</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <div class="flex-1 ml-64 p-6 relative z-20 text-white flex flex-col justify-center items-center">
+    <h1 class="text-4xl font-bold">Bem-vindo ao Painel</h1>
+    <p class="text-lg mt-2">Gerencie seus serviços e clientes de forma prática.</p>
+  </div>
+</div>

@@ -1,43 +1,124 @@
-<!-- BOTÃO PARA ABRIR A MODAL -->
-<button (click)="abrirModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-  Ver Lista de Clientes
-</button>
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar (Menu Lateral Fixo) -->
+  <aside class="w-64 bg-white shadow-md h-full flex flex-col fixed left-0 top-0">
+    <div class="p-4 text-xl font-bold text-gray-700">
+      <span class="text-blue-600">Admin</span> Dashboard
+    </div>
 
-<!-- MODAL OVERLAY (Exibido somente se isModalOpen == true) -->
-<div *ngIf="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4" >
-  <!-- MODAL CONTAINER -->
-  <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-4xl relative transition-all" >
-    <!-- BOTÃO DE FECHAR -->
+    <nav class="flex-1">
+      <ul class="space-y-2 p-4">
+        <li>
+          <a routerLink="/clientes/listar" class="flex items-center space-x-3 text-blue-600 font-medium px-3 py-2 rounded-lg bg-gray-200">
+            <span class="material-icons">people</span>
+            <span>Lista de Clientes</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicos/listar" class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+            <span class="material-icons">build</span>
+            <span>Lista de Serviços</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <div class="flex-1 ml-64 p-4">
+    <!-- Cabeçalho Compacto -->
+    <div class="flex justify-between items-center pb-2 border-b border-gray-300">
+      <!-- Ícone da Home -->
+  <a routerLink="/home" class="text-gray-600 hover:text-blue-600 mr-4 flex items-center">
+    <span class="material-icons text-2xl">home</span>
+  </a>
+      <h2 class="text-lg font-semibold text-gray-800">Lista de Clientes</h2>
+      <a routerLink="/clientes/cadastrar"
+         class="bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 flex items-center text-sm">
+        <span class="material-icons mr-2 text-base">person_add</span> Cadastrar Cliente
+      </a>
+    </div>
+
+    <!-- TABELA DE CLIENTES -->
+    <div class="bg-white shadow-md rounded-lg overflow-auto max-h-[65vh] mt-3">
+      <table class="w-full text-sm text-left text-gray-600">
+        <thead class="bg-gray-200 text-gray-700">
+          <tr class="text-xs">
+            <th class="px-3 py-2">Nome</th>
+            <th class="px-3 py-2">CPF/CNPJ</th>
+            <th class="px-3 py-2">Email</th>
+            <th class="px-3 py-2">Telefone</th>
+            <th class="px-3 py-2">Cidade</th>
+            <th class="px-3 py-2">Tipo Serviço</th>
+            <th class="px-3 py-2 text-right">Ações</th> <!-- NOVA COLUNA -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes" class="border-b hover:bg-gray-100 text-xs">
+            <td class="px-3 py-2">{{ cliente.nome }}</td>
+            <td class="px-3 py-2">{{ cliente.cpfCnpj }}</td>
+            <td class="px-3 py-2">{{ cliente.email }}</td>
+            <td class="px-3 py-2">{{ cliente.telefone }}</td>
+            <td class="px-3 py-2">{{ cliente.cidade }}</td>
+            <td class="px-3 py-2 text-blue-600 font-medium">{{ cliente.tipoServico }}</td>
+            <td class="px-3 py-2 text-right">
+              <button (click)="editarCliente(cliente)"
+                      class="bg-yellow-500 text-white p-1 rounded-full hover:bg-yellow-600 flex items-center justify-center text-xs w-8 h-8">
+                <span class="material-icons text-sm">edit</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>      
+    </div>
+  </div>
+  <!-- MODAL DE EDIÇÃO -->
+<div *ngIf="isEditModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+  <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg relative">
+    
+    <!-- Botão para Fechar o Modal -->
     <button (click)="fecharModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
       ✕
     </button>
 
-    <h2 class="text-2xl font-bold mb-4">Lista de Clientes</h2>
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Editar Cliente</h2>
 
-    <!-- TABELA DE CLIENTES -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border-collapse text-sm">
-        <thead>
-          <tr class="bg-gray-200">
-            <th class="border p-2">Nome</th>
-            <th class="border p-2">CPF/CNPJ</th>
-            <th class="border p-2">Email</th>
-            <th class="border p-2">Telefone</th>
-            <th class="border p-2">Cidade</th>
-            <th class="border p-2">Tipo Serviço</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let cliente of clientes" class="hover:bg-gray-100">
-            <td class="border p-2">{{ cliente.nome }}</td>
-            <td class="border p-2">{{ cliente.cpfCnpj }}</td>
-            <td class="border p-2">{{ cliente.email }}</td>
-            <td class="border p-2">{{ cliente.telefone }}</td>
-            <td class="border p-2">{{ cliente.cidade }}</td>
-            <td class="border p-2">{{ cliente.tipoServico }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <form (ngSubmit)="atualizarCliente()" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome</label>
+        <input [(ngModel)]="clienteEdit.nome" name="nome" type="text"
+               class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">CPF/CNPJ</label>
+        <input [(ngModel)]="clienteEdit.cpfCnpj" name="cpfCnpj" type="text"
+               class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input [(ngModel)]="clienteEdit.email" name="email" type="email"
+               class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Telefone</label>
+        <input [(ngModel)]="clienteEdit.telefone" name="telefone" type="text"
+               class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+      </div>
+
+      <div class="flex space-x-2">
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+          <span class="material-icons mr-2 text-sm">save</span> Salvar Alterações
+        </button>
+        <button type="button" (click)="fecharModal()"
+                class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+          <span class="material-icons mr-2 text-sm">close</span> Cancelar
+        </button>
+      </div>
+    </form>
+
   </div>
+</div>
+
 </div>
