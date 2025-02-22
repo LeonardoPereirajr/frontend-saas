@@ -31,7 +31,7 @@ GET /servicos: List services (used in ServicoListarComponent).
 
 POST /servicos: Create a service (used in `ServicoCadastrarComponent
 
-[DALL·E](https://github.com/user-attachments/assets/c57ed646-d8e2-4d30-87df-361f5bb6824a)
+![DALL·E](https://github.com/user-attachments/assets/c57ed646-d8e2-4d30-87df-361f5bb6824a)
 
 ## Development server
 
