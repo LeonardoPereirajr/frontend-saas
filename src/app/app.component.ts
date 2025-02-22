@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, style, animate, state} from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,12 +6,18 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    trigger('fadeAnimation', [
-      transition('* <=> *', [
-        style({ opacity: 0, transform: 'scale(0.98)' }),
-        animate('400ms ease-in-out', style({ opacity: 1, transform: 'translateY(0)' })),
-      ]),
-    ]),
-  ],
+    trigger('menuAnimation', [
+      state('open', style({ width: '16rem' })),
+      state('closed', style({ width: '4rem' })),
+      transition('open <=> closed', animate('300ms ease-in-out'))
+    ])
+  ]
 })
-export class AppComponent { }
+export class AppComponent {
+  
+  isMenuOpen = true;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+}

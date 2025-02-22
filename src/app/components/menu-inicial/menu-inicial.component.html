@@ -4,44 +4,59 @@
     <div class="absolute inset-0 bg-black/40"></div>
   </div>
 
-
-  <aside class="w-64 bg-white shadow-md h-full flex flex-col fixed left-0 top-0 z-20">
-    <div class="p-4 text-xl font-bold text-gray-700">
-      <span class="text-blue-600">GH</span> Dashboard
-    </div>
+  <!-- Menu Lateral -->
+  <aside [ngClass]="{'w-64': isMenuOpen, 'w-16': !isMenuOpen, 'menu-open': isMenuOpen, 'menu-closed': !isMenuOpen}" 
+       class="bg-white shadow-md h-full flex flex-col fixed left-0 top-0 z-20 transition-all duration-300">
+       <div class="p-4 flex justify-between items-center">
+        <div class="text-xl font-bold text-gray-700">
+          <span class="text-blue-600">{{ isMenuOpen ? 'SansData' : 'SD' }}</span>
+          <span [ngClass]="{'hidden': !isMenuOpen}"> Dashboard</span>
+        </div>
+        <button (click)="toggleMenu()" 
+                class="text-gray-600 focus:outline-none">
+          <span class="material-icons">{{ isMenuOpen ? 'chevron_left' : 'chevron_right' }}</span>
+        </button>
+      </div>
 
     <nav class="flex-1">
       <ul class="space-y-2 p-4">
         <li>
-          <a routerLink="/clientes/listar" class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+          <a routerLink="/clientes/listar" 
+             class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
             <span class="material-icons">people</span>
-            <span>Lista de Clientes</span>
+            <span [ngClass]="{'hidden': !isMenuOpen}">Lista de Clientes</span>
           </a>
         </li>
         <li>
-          <a routerLink="/servicos/listar" class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+          <a routerLink="/servicos/listar" 
+             class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
             <span class="material-icons">build</span>
-            <span>Lista de Serviços</span>
+            <span [ngClass]="{'hidden': !isMenuOpen}">Lista de Serviços</span>
           </a>
         </li>
         <li>
-          <a routerLink="/clientes/cadastrar" class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg bg-gray-200">
+          <a routerLink="/clientes/cadastrar" 
+             class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg bg-gray-200">
             <span class="material-icons">person_add</span>
-            <span>Cadastrar Cliente</span>
+            <span [ngClass]="{'hidden': !isMenuOpen}">Cadastrar Cliente</span>
           </a>
         </li>
         <li>
-          <a routerLink="/servicos/cadastrar" class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg hover:bg-gray-200">
+          <a routerLink="/servicos/cadastrar" 
+             class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg hover:bg-gray-200">
             <span class="material-icons">add_circle</span>
-            <span>Cadastrar Serviço</span>
+            <span [ngClass]="{'hidden': !isMenuOpen}">Cadastrar Serviço</span>
           </a>
         </li>
       </ul>
     </nav>
   </aside>
 
-  <div class="flex-1 ml-64 p-6 relative z-20 text-white flex flex-col justify-center items-center">
+  <!-- Conteúdo Principal -->
+  <div [ngClass]="{'ml-64': isMenuOpen, 'ml-16': !isMenuOpen}" 
+       class="flex-1 p-6 relative z-20 text-white flex flex-col justify-center items-center transition-all duration-300">
     <h1 class="text-4xl font-bold">Bem-vindo ao Painel</h1>
+    <h1 class="text-4xl font-bold">SansData</h1>
     <p class="text-lg mt-2">Gerencie seus serviços e clientes de forma prática.</p>
   </div>
 </div>

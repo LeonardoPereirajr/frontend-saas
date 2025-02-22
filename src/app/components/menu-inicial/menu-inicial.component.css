@@ -2,3 +2,13 @@ body {
     margin: 0;
     padding: 0;
   }
+
+.menu-closed .router-link-active {
+    background-color: transparent;
+    color: inherit; 
+}
+
+.menu-closed .router-link-active .material-icons {
+  color: inherit; 
+  text-shadow: none; 
+}
