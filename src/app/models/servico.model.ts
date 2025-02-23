@@ -14,4 +14,8 @@ export interface Servico {
     deslocamentoKm?: number;
     custoPorKm?: number;
     totalCustoDeslocamento?: number;
+
+    // novos campos para storymaker
+    horasServico?: number;
+    valorTotal?: number;
   }

@@ -51,6 +51,8 @@
             <th class="px-3 py-2">Deslocamento (Km)</th>
             <th class="px-3 py-2">Custo por Km</th>
             <th class="px-3 py-2">Total Deslocamento</th>
+            <th class="px-3 py-2">Horas Serviço</th>
+            <th class="px-3 py-2">Valor Total</th>
             <th class="px-3 py-2">Descrição</th>
           </tr>
         </thead>
@@ -65,6 +67,8 @@
             <td class="px-3 py-2">{{ servico.deslocamentoKm }}</td>
             <td class="px-3 py-2">{{ servico.custoPorKm | currency:'BRL' }}</td>
             <td class="px-3 py-2 font-bold text-green-600">{{ servico.totalCustoDeslocamento | currency:'BRL' }}</td>
+            <td class="px-3 py-2">{{ servico.horasServico }}</td>
+            <td class="px-3 py-2 font-bold text-green-600">{{ servico.valorTotal | currency:'BRL' }}</td>
             <td class="px-3 py-2">
               <button (click)="abrirModal(servico.descricao)" class="text-blue-500 hover:text-blue-700">
                 <span class="material-icons text-sm">info</span>

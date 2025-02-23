@@ -24,7 +24,10 @@ export class ServicoCadastrarComponent {
 
     deslocamentoKm: 0,
     custoPorKm: 0,
-    totalCustoDeslocamento: 0
+    totalCustoDeslocamento: 0,
+
+    horasServico: 0, 
+    valorTotal: 0
   };
   ngOnInit(): void {
     this.carregarClientes();
@@ -45,6 +48,19 @@ export class ServicoCadastrarComponent {
   clientes: Cliente[] = [];
   
   constructor(private servicoService: ServicoService, private clienteService: ClienteService, private router: Router, private location: Location ) {}
+
+  calcularTotal(): void {
+    if (this.novoServico.tipoServico === 'STORYMAKER') {
+      const deslocamento = this.novoServico.deslocamentoKm || 0;
+      const custoKm = this.novoServico.custoPorKm || 0;
+      const valorHora = this.novoServico.valorHora || 0;
+      const horasServico = this.novoServico.horasServico || 0;
+
+      this.novoServico.totalCustoDeslocamento = deslocamento * custoKm;
+
+      this.novoServico.valorTotal = this.novoServico.totalCustoDeslocamento + (valorHora * horasServico);
+    }
+  }
 
   aoSelecionarTipo(tipo: string): void {
     this.novoServico.tipoServico = tipo as 'STORYMAKER' | 'ASSESSORIA';
