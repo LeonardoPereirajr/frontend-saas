@@ -5,11 +5,16 @@
   </div>
 
   <!-- Menu Lateral -->
-  <aside [ngClass]="{'w-64': isMenuOpen, 'w-16': !isMenuOpen, 'menu-open': isMenuOpen, 'menu-closed': !isMenuOpen}" 
+  <aside [ngClass]="{'w-64': isMenuOpen, 'w-24': !isMenuOpen, 'menu-open': isMenuOpen, 'menu-closed': !isMenuOpen}" 
        class="bg-white shadow-md h-full flex flex-col fixed left-0 top-0 z-20 transition-all duration-300">
        <div class="p-4 flex justify-between items-center">
         <div class="text-xl font-bold text-gray-700">
-          <span class="text-blue-600">{{ isMenuOpen ? 'SansData' : 'SD' }}</span>
+          <ng-container *ngIf="isMenuOpen; else closedMenu">
+            <img src="/assets/sansdata.png" alt="SansData" class="h-8">
+          </ng-container>
+          <ng-template #closedMenu>
+            <img src="/assets/icon.png" alt="Icon" class="h-8">
+          </ng-template>
           <span [ngClass]="{'hidden': !isMenuOpen}"> Dashboard</span>
         </div>
         <button (click)="toggleMenu()" 
