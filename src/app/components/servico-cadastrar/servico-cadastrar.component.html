@@ -95,29 +95,39 @@
         <!-- CAMPOS PARA STORYMAKER -->
         <div *ngIf="novoServico.tipoServico === 'STORYMAKER'" class="bg-gray-50 p-4 rounded-lg">
           <h3 class="font-semibold mb-2 text-gray-700">Valores para Storymaker</h3>
-
           <div class="space-y-2">
             <div>
               <label class="block text-sm font-medium text-gray-700">Valor Hora</label>
               <input [(ngModel)]="novoServico.valorHora" name="valorHoraStory" type="number" step="any"
+                (ngModelChange)="calcularTotal()"
                 class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
             </div>
-
             <div>
               <label class="block text-sm font-medium text-gray-700">Deslocamento (Km)</label>
               <input [(ngModel)]="novoServico.deslocamentoKm" name="deslocamentoKm" type="number" step="any"
+                (ngModelChange)="calcularTotal()"
                 class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
             </div>
-
             <div>
               <label class="block text-sm font-medium text-gray-700">Custo por Km (R$)</label>
               <input [(ngModel)]="novoServico.custoPorKm" name="custoPorKm" type="number" step="any"
+                (ngModelChange)="calcularTotal()"
                 class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
             </div>
-
             <div>
               <label class="block text-sm font-medium text-gray-700">Total Custo Deslocamento (R$)</label>
-              <input [(ngModel)]="novoServico.totalCustoDeslocamento" name="totalCustoDeslocamento" type="number" step="any"
+              <input [value]="novoServico.totalCustoDeslocamento" name="totalCustoDeslocamento" type="number" step="any" readonly
+                class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Horas de Serviço</label>
+              <input [(ngModel)]="novoServico.horasServico" name="horasServico" type="number" step="any"
+                (ngModelChange)="calcularTotal()"
+                class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Valor Total (R$)</label>
+              <input [value]="novoServico.valorTotal" type="number" step="any" readonly
                 class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
             </div>
           </div>
