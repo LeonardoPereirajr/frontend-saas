@@ -17,4 +17,11 @@ export class ServicoService {
   salvar(servico: Servico): Observable<Servico> {
     return this.http.post<Servico>(this.apiUrl, servico);
   }
+  atualizar(id: string, servico: Servico): Observable<Servico> {
+    return this.http.put<Servico>(`${this.apiUrl}/${id}`, servico);
+  }
+
+  deletar(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
