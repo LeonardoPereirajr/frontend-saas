@@ -2,7 +2,7 @@
   <!-- Sidebar (Menu Lateral Fixo) -->
   <aside class="w-64 bg-white shadow-md h-full flex flex-col fixed left-0 top-0">
     <div class="p-4 text-xl font-bold text-gray-700">
-      <span class="text-blue-600">SansData</span> Dashboard
+      <img src="/assets/sansdata.png" alt="SansData" class="h-8">
     </div>
 
     <nav class="flex-1">
@@ -49,7 +49,7 @@
             <th class="px-3 py-2">Telefone</th>
             <th class="px-3 py-2">Cidade</th>
             <th class="px-3 py-2">Tipo Serviço</th>
-            <th class="px-3 py-2 text-right">Ações</th> <!-- NOVA COLUNA -->
+            <th class="px-3 py-2">Ações</th> 
           </tr>
         </thead>
         <tbody>
@@ -60,11 +60,17 @@
             <td class="px-3 py-2">{{ cliente.telefone }}</td>
             <td class="px-3 py-2">{{ cliente.cidade }}</td>
             <td class="px-3 py-2 text-blue-600 font-medium">{{ cliente.tipoServico }}</td>
-            <td class="px-3 py-2 text-right">
+            <td class="px-3 py-2 text-right flex justify-left space-x-2">
               <button (click)="editarCliente(cliente)"
-                      class="bg-yellow-500 text-white p-1 rounded-full hover:bg-yellow-600 flex items-center justify-center text-xs w-8 h-8">
-                <span class="material-icons text-sm">edit</span>
+                      class="text-gray-500 p-1 rounded-full flex items-center justify-center text-xs w-8 h-8"
+                      title="Editar">
+                <i class="pi pi-user-edit text-sm"></i> 
               </button>
+              <button (click)="deletarCliente(cliente)"
+                    class="text-red-500 p-1 rounded-full flex items-center justify-center text-xs w-8 h-8"
+                    title="Excluir">
+              <i class="pi pi-trash text-sm"></i> 
+            </button>
             </td>
           </tr>
         </tbody>
