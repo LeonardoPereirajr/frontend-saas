@@ -46,10 +46,10 @@
         <!-- CLIENTE ID -->
         <div>
           <label class="block text-sm font-medium text-gray-700">Cliente</label>
-          <select [(ngModel)]="novoServico.clienteId" name="nome">
+          <select [(ngModel)]="novoServico.clienteId" name="clienteId"
+                  class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
             <option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nome }}</option>
           </select>
-        
         </div>
 
         <!-- TIPO DE SERVIÇO -->
