@@ -54,6 +54,7 @@
             <th class="px-3 py-2">Horas Serviço</th>
             <th class="px-3 py-2">Valor Total</th>
             <th class="px-3 py-2">Descrição</th>
+            <th class="px-3 py-2">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +75,18 @@
                 <span class="material-icons text-sm">info</span>
               </button>
             </td>
+            <td class="px-3 py-2 text-right flex justify-end space-x-2">
+              <button (click)="editarServico(servico)"
+                      class="bg-yellow-500 text-white p-1 rounded-full hover:bg-yellow-600 flex items-center justify-center text-xs w-8 h-8"
+                      title="Editar">
+                <i class="pi pi-user-edit text-sm"></i>
+              </button>
+              <button (click)="deletarServico(servico)"
+                      class="bg-red-500 text-white p-1 rounded-full hover:bg-red-600 flex items-center justify-center text-xs w-8 h-8"
+                      title="Excluir">
+                <i class="pi pi-trash text-sm"></i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -89,3 +102,74 @@
           </div>
         </div>
       </div>
+      <!-- MODAL DE EDIÇÃO -->
+      <div *ngIf="isEditModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+        <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg relative">
+          <button (click)="fecharEditModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+            ✕
+          </button>
+          <h2 class="text-lg font-semibold text-gray-800 mb-4">Editar Serviço</h2>
+          <form (ngSubmit)="atualizarServico()" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Cliente</label>
+              <input [(ngModel)]="servicoEdit.nomeCliente" name="nomeCliente" type="text"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300" readonly>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Tipo de Serviço</label>
+              <select [(ngModel)]="servicoEdit.tipoServico" name="tipoServico"
+                      class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+                <option value="STORYMAKER">STORYMAKER</option>
+                <option value="ASSESSORIA">ASSESSORIA</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Valor Hora</label>
+              <input [(ngModel)]="servicoEdit.valorHora" name="valorHora" type="number" step="any"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Horas Mensais</label>
+              <input [(ngModel)]="servicoEdit.horasMensais" name="horasMensais" type="number"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Valor Mensal</label>
+              <input [(ngModel)]="servicoEdit.valorMensal" name="valorMensal" type="number" step="any"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Deslocamento (Km)</label>
+              <input [(ngModel)]="servicoEdit.deslocamentoKm" name="deslocamentoKm" type="number" step="any"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Custo por Km</label>
+              <input [(ngModel)]="servicoEdit.custoPorKm" name="custoPorKm" type="number" step="any"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Total Custo Deslocamento</label>
+              <input [(ngModel)]="servicoEdit.totalCustoDeslocamento" name="totalCustoDeslocamento" type="number" step="any"
+                     class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Descrição</label>
+              <textarea [(ngModel)]="servicoEdit.descricao" name="descricao" maxlength="200"
+                        class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300" rows="3"></textarea>
+            </div>
+            <div class="flex space-x-2">
+              <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+                <span class="material-icons mr-2 text-sm">save</span> Salvar Alterações
+              </button>
+              <button type="button" (click)="fecharEditModal()"
+                      class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+                <span class="material-icons mr-2 text-sm">close</span> Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
