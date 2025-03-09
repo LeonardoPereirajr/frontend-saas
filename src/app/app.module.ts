@@ -17,6 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card'; 
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { PropostaComponent } from './components/proposta/proposta.component';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -24,7 +27,8 @@ import { FormsModule } from '@angular/forms';
         ClienteCadastrarComponent,
         ServicoListarComponent,
         ServicoCadastrarComponent,
-        MenuInicialComponent
+        MenuInicialComponent,
+        PropostaComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
@@ -47,6 +51,8 @@ import { FormsModule } from '@angular/forms';
         MatInputModule,
         FormsModule,
         MatTableModule,
+        MatCardModule,
+        MatToolbarModule 
         ],
    providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
 export class AppModule { }

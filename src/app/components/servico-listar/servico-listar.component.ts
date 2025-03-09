@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Servico } from '../../models/servico.model';
 import { ServicoService } from '../../services/servico.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servico-listar',
@@ -13,8 +14,10 @@ export class ServicoListarComponent implements OnInit {
   descricaoSelecionada: string = ''; 
   isEditModalOpen = false; 
   servicoEdit: Servico | null = null;
+  isViewModalOpen = false;
+  servicoSelecionado: Servico | null = null;
 
-  constructor(private servicoService: ServicoService) {}
+  constructor(private servicoService: ServicoService, private router: Router) {}
 
   ngOnInit(): void {
     this.obterServicos();
@@ -37,6 +40,16 @@ export class ServicoListarComponent implements OnInit {
     this.isModalOpen = true;
   }
 
+  abrirVisualizacaoServico(servico: Servico): void {
+    this.servicoSelecionado = { ...servico };
+    this.isViewModalOpen = true;
+  }
+
+  fecharVisualizacaoModal(): void {
+    this.isViewModalOpen = false;
+    this.servicoSelecionado = null;
+  }
+
   fecharModal(): void {
     this.isModalOpen = false;
     this.descricaoSelecionada = '';
@@ -46,9 +59,15 @@ export class ServicoListarComponent implements OnInit {
     this.isEditModalOpen = true;
   }
 
+  // gerarProposta(servico: Servico): void {
+  //   window.open(`http://localhost:8080/api/pdf/proposta/${servico.id}`, '_blank');
+  // }  
+
   gerarProposta(servico: Servico): void {
-    window.open(`http://localhost:8080/api/pdf/proposta/${servico.id}`, '_blank');
-  }  
+    if (servico.id) {
+      this.router.navigate(['/proposta', servico.id]);
+    }
+  }
 
   atualizarServico(): void {
     if (this.servicoEdit && this.servicoEdit.id) {

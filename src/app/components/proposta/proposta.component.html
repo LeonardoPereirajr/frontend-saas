@@ -1,0 +1,71 @@
+<div class="container">
+  <mat-card class="proposal-card" *ngIf="servicoSelecionado">
+    <!-- Cabeçalho -->
+    <mat-toolbar color="primary">
+      <span>Proposta Comercial</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="imprimirProposta()">
+        <mat-icon>print</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="proposal-header">
+      <h2>{{ servicoSelecionado.nomeCliente }}</h2>
+      <p>{{ servicoSelecionado.endereco }}</p>
+    </div>
+
+    <!-- Corpo da Proposta -->
+    <mat-card-content>
+      <div class="proposal-content">
+        <div class="grid-container">
+          <mat-card class="field">
+            <h3>Tipo de Serviço</h3>
+            <p>{{ servicoSelecionado.tipoServico }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Valor Hora</h3>
+            <p>{{ servicoSelecionado.valorHora | currency:'BRL' }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Horas Mensais</h3>
+            <p>{{ servicoSelecionado.horasMensais }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Valor Mensal</h3>
+            <p>{{ servicoSelecionado.valorMensal | currency:'BRL' }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Deslocamento (Km)</h3>
+            <p>{{ servicoSelecionado.deslocamentoKm }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Custo por Km</h3>
+            <p>{{ servicoSelecionado.custoPorKm | currency:'BRL' }}</p>
+          </mat-card>
+
+          <mat-card class="field">
+            <h3>Total Custo Deslocamento</h3>
+            <p>{{ servicoSelecionado.totalCustoDeslocamento | currency:'BRL' }}</p>
+          </mat-card>
+
+          <mat-card class="field total-field">
+            <h3>Valor Total</h3>
+            <p>{{ servicoSelecionado.valorTotal | currency:'BRL' }}</p>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <!-- Rodapé -->
+    <mat-divider></mat-divider>
+    <div class="proposal-footer">
+      <p>Assinatura do Responsável:</p>
+      <p>__________________________</p>
+    </div>
+  </mat-card>
+</div>

@@ -5,6 +5,7 @@ import { ClienteCadastrarComponent } from './components/cliente-cadastrar/client
 import { ServicoCadastrarComponent } from './components/servico-cadastrar/servico-cadastrar.component';
 import { ServicoListarComponent } from './components/servico-listar/servico-listar.component';
 import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.component';
+import { PropostaComponent } from './components/proposta/proposta.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'clientes/cadastrar', component: ClienteCadastrarComponent },
   { path: 'servicos/cadastrar', component: ServicoCadastrarComponent },
   { path: 'servicos/listar', component: ServicoListarComponent },
+  { path: 'proposta/:id', component: PropostaComponent },
   { path: '', redirectTo: '/orcamento', pathMatch: 'full' }
 ];
 
