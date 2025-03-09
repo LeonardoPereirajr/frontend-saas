@@ -46,6 +46,10 @@ export class ServicoListarComponent implements OnInit {
     this.isEditModalOpen = true;
   }
 
+  gerarProposta(servico: Servico): void {
+    window.open(`http://localhost:8080/api/pdf/proposta/${servico.id}`, '_blank');
+  }  
+
   atualizarServico(): void {
     if (this.servicoEdit && this.servicoEdit.id) {
       this.servicoService.atualizar(this.servicoEdit.id, this.servicoEdit).subscribe(

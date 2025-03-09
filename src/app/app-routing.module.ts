@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'clientes/cadastrar', component: ClienteCadastrarComponent },
   { path: 'servicos/cadastrar', component: ServicoCadastrarComponent },
   { path: 'servicos/listar', component: ServicoListarComponent },
+  { path: '', redirectTo: '/orcamento', pathMatch: 'full' }
 ];
 
 @NgModule({
