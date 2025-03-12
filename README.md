@@ -1,5 +1,7 @@
 # FrontendSaas
 
+Projeto idealizado para servir de ferramenta de Gestão de clientes para minha esposa. No Readme do Backend esta mais explicado as funcionalidades até o momento.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.13.
 
 Componentes principais:
