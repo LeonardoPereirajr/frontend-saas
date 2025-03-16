@@ -72,11 +72,9 @@
             <td class="px-3 py-2">{{ servico.horasServico }}</td>
             <td class="px-3 py-2 font-bold text-green-600">{{ servico.valorTotal | currency:'BRL' }}</td>
             <td class="px-3 py-2 text-right flex justify-start space-x-2">
-              <button (click)="editarServico(servico); $event.stopPropagation()"
-                      class="text-gray-500 p-1 rounded-full flex items-center justify-center text-xs hover:bg-gray-200"
-                      title="Editar">
+              <button (click)="editarServico(servico)" title="Editar">
                 <span class="material-icons text-sm">edit</span>
-              </button>
+              </button>              
         
               <button (click)="excluirServico(servico, $event);"
                       class="text-red-500 p-1 rounded-full flex items-center justify-center text-xs">

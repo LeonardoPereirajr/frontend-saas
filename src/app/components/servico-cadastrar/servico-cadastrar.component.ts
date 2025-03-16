@@ -34,7 +34,6 @@ export class ServicoCadastrarComponent {
   }
 
   carregarClientes(): void {
-    // Chama o backend para buscar todos os clientes
     this.clienteService.listarTodos().subscribe(
       (dados) => {
         this.clientes = dados;
@@ -71,16 +70,17 @@ export class ServicoCadastrarComponent {
   }
 
   aoSalvar(): void {
-    if (!this.novoServico.clienteId) {
-      alert("Selecione um cliente antes de salvar!");
+    if (!this.novoServico.clienteId || this.novoServico.clienteId.trim() === '') {
+      alert("❌ ERRO: Selecione um cliente antes de salvar!");
       return;
     }
   
+    
     this.servicoService.salvar(this.novoServico).subscribe(() => {
-      alert('Serviço cadastrado com sucesso!');
+      alert('✅ Serviço cadastrado com sucesso!');
     });
   }
-  
+ 
 
   voltar(): void {
     this.location.back(); 

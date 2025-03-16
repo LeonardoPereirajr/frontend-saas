@@ -27,13 +27,13 @@ export class ServicoListarComponent implements OnInit {
     this.servicoService.listarTodos().subscribe(
       (dados) => {
         this.servicos = dados;
-        console.log('Serviços recebidos:', dados);
       },
       (erro) => {
-        console.error('Erro ao buscar serviços:', erro);
+        console.error('❌ Erro ao buscar serviços:', erro);
       }
     );
   }
+  
 
   abrirModal(descricao: string): void {
     this.descricaoSelecionada = descricao;
@@ -54,14 +54,15 @@ export class ServicoListarComponent implements OnInit {
     this.isModalOpen = false;
     this.descricaoSelecionada = '';
   }
-  editarServico(servico: Servico, event?: MouseEvent): void {
-    event?.stopPropagation(); 
+  editarServico(servico: Servico): void {
+    console.log(`Editando serviço com ID: ${servico.id}`);
     this.servicoEdit = { ...servico };
     this.isEditModalOpen = true;
   }
   
+  
   excluirServico(servico: Servico, event: Event): void {
-    event.stopPropagation(); // evita abrir modal de visualização ao clicar em excluir
+    event.stopPropagation(); 
     if (confirm(`Tem certeza que deseja excluir o serviço para ${servico.nomeCliente}?`)) {
       this.servicoService.deletar(servico.id!).subscribe(
         () => {
@@ -89,19 +90,30 @@ export class ServicoListarComponent implements OnInit {
 
   atualizarServico(): void {
     if (this.servicoEdit && this.servicoEdit.id) {
-      this.servicoService.atualizar(this.servicoEdit.id, this.servicoEdit).subscribe(
+      const servicoParaAtualizar = {
+        ...this.servicoEdit,
+        clienteId: this.servicoEdit.clienteId || 
+                   this.servicos.find(s => s.id === this.servicoEdit!.id)?.clienteId
+      };
+  
+      this.servicoService.atualizar(this.servicoEdit.id, servicoParaAtualizar).subscribe(
         (servicoAtualizado) => {
-          this.servicos = this.servicos.map(s => s.id === servicoAtualizado.id ? servicoAtualizado : s);
+          this.servicos = this.servicos.map(s => 
+            s.id === servicoAtualizado.id 
+              ? { ...servicoAtualizado, nomeCliente: s.nomeCliente }  
+              : s
+          );
           alert('Serviço atualizado com sucesso!');
           this.fecharEditModal();
         },
         (erro) => {
-          console.error('Erro ao atualizar serviço:', erro);
           alert('Erro ao atualizar serviço. Tente novamente.');
         }
       );
     }
-  }
+  } 
+  
+  
   fecharEditModal(): void {
     this.isEditModalOpen = false;
     this.servicoEdit = null;
