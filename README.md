@@ -1,5 +1,17 @@
 # FrontendSaas
 
+Projeto idealizado para servir de ferramenta de Gestão de clientes para minha esposa. No Readme do Backend esta mais explicado as funcionalidades até o momento.
+
+![image](https://github.com/user-attachments/assets/935d439e-5531-4750-9e03-0026a91d17cf)
+
+
+Próximas Entregas
+
+- Envio de Proposta / Orçamento aos clientes por integração Whatsapp e gmail.
+- Criação de kanban de agendamento de tarefas.
+- Envio de notificações de status de tarefas.
+- Pensar em Modulo para o clientes interagirem com o profissional.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.13.
 
 Componentes principais:
