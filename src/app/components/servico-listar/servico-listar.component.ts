@@ -54,10 +54,28 @@ export class ServicoListarComponent implements OnInit {
     this.isModalOpen = false;
     this.descricaoSelecionada = '';
   }
-  editarServico(servico: Servico): void {
-    this.servicoEdit = { ...servico }; 
+  editarServico(servico: Servico, event?: MouseEvent): void {
+    event?.stopPropagation(); 
+    this.servicoEdit = { ...servico };
     this.isEditModalOpen = true;
   }
+  
+  excluirServico(servico: Servico, event: Event): void {
+    event.stopPropagation(); // evita abrir modal de visualização ao clicar em excluir
+    if (confirm(`Tem certeza que deseja excluir o serviço para ${servico.nomeCliente}?`)) {
+      this.servicoService.deletar(servico.id!).subscribe(
+        () => {
+          this.servicos = this.servicos.filter(s => s.id !== servico.id);
+          alert('Serviço excluído com sucesso!');
+        },
+        (erro) => {
+          console.error('Erro ao excluir serviço:', erro);
+          alert('Erro ao excluir serviço.');
+        }
+      );
+    }
+  }
+  
 
   // gerarProposta(servico: Servico): void {
   //   window.open(`http://localhost:8080/api/pdf/proposta/${servico.id}`, '_blank');
@@ -87,19 +105,5 @@ export class ServicoListarComponent implements OnInit {
   fecharEditModal(): void {
     this.isEditModalOpen = false;
     this.servicoEdit = null;
-  }
-  deletarServico(servico: Servico): void {
-    if (confirm(`Tem certeza que deseja excluir o serviço para ${servico.nomeCliente}?`)) {
-      this.servicoService.deletar(servico.id!).subscribe(
-        () => {
-          this.servicos = this.servicos.filter(s => s.id !== servico.id);
-          alert('Serviço excluído com sucesso!');
-        },
-        (erro) => {
-          console.error('Erro ao excluir serviço:', erro);
-          alert('Erro ao excluir serviço. Tente novamente.');
-        }
-      );
-    }
   }
 }

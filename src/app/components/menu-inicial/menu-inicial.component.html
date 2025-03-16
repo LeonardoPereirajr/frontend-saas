@@ -6,7 +6,8 @@
 
   <!-- Menu Lateral -->
   <aside [ngClass]="{'w-64': isMenuOpen, 'w-24': !isMenuOpen, 'menu-open': isMenuOpen, 'menu-closed': !isMenuOpen}" 
-       class="bg-white shadow-md h-full flex flex-col fixed left-0 top-0 z-20 transition-all duration-300">
+       class="shadow-md h-full flex flex-col fixed left-0 top-0 z-20 transition-all duration-300 bg-gradient-to-t from-blue-500 to-blue-50">
+
        <div class="p-4 flex justify-between items-center">
         <div class="text-xl font-bold text-gray-700">
           <ng-container *ngIf="isMenuOpen; else closedMenu">

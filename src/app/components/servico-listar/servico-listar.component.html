@@ -44,7 +44,6 @@
       <table class="w-full text-sm text-left text-gray-600">
         <thead class="bg-gray-200 text-gray-700">
           <tr class="text-xs">
-            <th class="px-3 py-2">ID</th>
             <th class="px-3 py-2">Cliente</th>
             <th class="px-3 py-2">Tipo de Serviço</th>
             <th class="px-3 py-2">Valor Hora</th>
@@ -59,10 +58,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let servico of servicos" class="border-b hover:bg-gray-100 cursor-pointer text-xs"
-            (click)="abrirVisualizacaoServico(servico)">
-            <td class="px-3 py-2">{{ servico.id }}</td>
-            <td class="px-3 py-2">{{ servico.nomeCliente }}</td>
+          <tr *ngFor="let servico of servicos" class="border-b hover:bg-gray-100 cursor-pointer text-xs">
+            <td class="px-3 py-2 cursor-pointer hover:text-blue-600 font-medium" (click)="abrirVisualizacaoServico(servico)">
+              {{ servico.nomeCliente }}
+            </td>
             <td class="px-3 py-2">{{ servico.tipoServico }}</td>
             <td class="px-3 py-2">{{ servico.valorHora | currency:'BRL' }}</td>
             <td class="px-3 py-2">{{ servico.horasMensais }}</td>
@@ -72,6 +71,18 @@
             <td class="px-3 py-2 font-bold text-green-600">{{ servico.totalCustoDeslocamento | currency:'BRL' }}</td>
             <td class="px-3 py-2">{{ servico.horasServico }}</td>
             <td class="px-3 py-2 font-bold text-green-600">{{ servico.valorTotal | currency:'BRL' }}</td>
+            <td class="px-3 py-2 text-right flex justify-start space-x-2">
+              <button (click)="editarServico(servico); $event.stopPropagation()"
+                      class="text-gray-500 p-1 rounded-full flex items-center justify-center text-xs hover:bg-gray-200"
+                      title="Editar">
+                <span class="material-icons text-sm">edit</span>
+              </button>
+        
+              <button (click)="excluirServico(servico, $event);"
+                      class="text-red-500 p-1 rounded-full flex items-center justify-center text-xs">
+                <span class="material-icons text-sm">delete</span>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

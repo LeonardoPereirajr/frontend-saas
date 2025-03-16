@@ -50,17 +50,21 @@ export class ServicoCadastrarComponent {
   constructor(private servicoService: ServicoService, private clienteService: ClienteService, private router: Router, private location: Location ) {}
 
   calcularTotal(): void {
-    if (this.novoServico.tipoServico === 'STORYMAKER') {
-      const deslocamento = this.novoServico.deslocamentoKm || 0;
-      const custoKm = this.novoServico.custoPorKm || 0;
-      const valorHora = this.novoServico.valorHora || 0;
-      const horasServico = this.novoServico.horasServico || 0;
-
+    const valorHora = this.novoServico.valorHora || 0;
+    const horasMensais = this.novoServico.horasMensais || 0;
+    const deslocamento = this.novoServico.deslocamentoKm || 0;
+    const custoKm = this.novoServico.custoPorKm || 0;
+    const horasServico = this.novoServico.horasServico || 0;
+  
+    if (this.novoServico.tipoServico === 'ASSESSORIA') {
+      this.novoServico.valorMensal = valorHora * horasMensais;
+      this.novoServico.valorTotal = this.novoServico.valorMensal; 
+    } else if (this.novoServico.tipoServico === 'STORYMAKER') {
       this.novoServico.totalCustoDeslocamento = deslocamento * custoKm;
-
-      this.novoServico.valorTotal = this.novoServico.totalCustoDeslocamento + (valorHora * horasServico);
+      this.novoServico.valorTotal = (valorHora * horasServico) + this.novoServico.totalCustoDeslocamento;
     }
   }
+  
 
   aoSelecionarTipo(tipo: string): void {
     this.novoServico.tipoServico = tipo as 'STORYMAKER' | 'ASSESSORIA';
