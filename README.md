@@ -2,15 +2,115 @@
 
 Projeto idealizado para servir de ferramenta de Gestão de clientes para minha esposa. No Readme do Backend esta mais explicado as funcionalidades até o momento.
 
-![image](https://github.com/user-attachments/assets/935d439e-5531-4750-9e03-0026a91d17cf)
+![image](https://github.com/user-attachments/assets/9bb70156-f1ae-4928-9b8e-ca339f757c42)
+
 
 
 Próximas Entregas
 
-- Envio de Proposta / Orçamento aos clientes por integração Whatsapp e gmail.
-- Criação de kanban de agendamento de tarefas.
-- Envio de notificações de status de tarefas.
-- Pensar em Modulo para o clientes interagirem com o profissional.
+🔹 Cadastro de Usuários e Autenticação
+
+Criar login/logout com JWT
+
+Implementar recuperação de senha
+
+Criar níveis de permissão (Admin, Usuário, Cliente)
+
+🔹 Ajustes no Backend
+
+Revisar CRUD de Clientes e Serviços
+
+Testes unitários iniciais
+
+🔹 Frontend - Melhorias Iniciais
+
+Ajustes na UI dos cadastros
+
+Melhorar experiência do detalhamento de serviços
+
+🟡 Mês 2 - Propostas e Orçamentos
+
+🔹 Gerador de Propostas
+
+Criar estrutura de proposta no Frontend
+
+Enviar proposta por e-mail e WhatsApp (API Twilio ou outra)
+
+Criar tabela de propostas com status
+
+🔹 Cálculo de Orçamentos
+
+Criar tela de cálculo
+
+Adicionar regras para serviços adicionais
+
+Implementar validações
+
+🔹 Notificações
+
+Criar sistema de notificações internas
+
+Enviar alertas por e-mail para clientes
+
+🟠 Mês 3 - Agenda e Workflow
+
+🔹 Implementação do Kanban
+
+Criar movimentação entre status (Proposta, Orçamento Enviado, Produção, Concluído)
+
+Adicionar arrastar e soltar
+
+Enviar alertas quando um serviço mudar de status
+
+🔹 Melhorias no Backend
+
+Ajustar API para manipular status
+
+Criar logs de movimentação
+
+🔹 Fila de Processamento
+
+Implementar RabbitMQ para envio de notificações e emails assíncronos
+
+🔴 Mês 4 - Serviços Extras e Refinamento
+
+🔹 Serviços Adicionais
+
+Criar pacotes para Storymakers, Filmmakers e Assessoria
+
+Permitir configurações personalizadas para cada serviço
+
+🔹 Melhorias no Design
+
+Refinar UI/UX
+
+Adicionar Dark Mode
+
+🔹 Segurança e Otimização
+
+Implementar logs de auditoria
+
+Melhorar performance das consultas ao banco
+
+🟣 Mês 5 - Finalização e Testes
+
+🔹 Testes Finais
+
+Testar fluxo completo do sistema
+
+Corrigir bugs identificados
+
+🔹 Documentação
+
+Criar tutorial para novos usuários
+
+Documentar APIs e estrutura do código
+
+🔹 Publicação
+
+Configurar deploy automatizado
+
+Lançamento para usuários iniciais
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.13.
 
