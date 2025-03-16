@@ -12,3 +12,18 @@ body {
   color: inherit; 
   text-shadow: none; 
 }
+
+aside {
+  z-index: 100 !important;
+  position: fixed;
+}
+
+.grid {
+  position: relative;
+  z-index: 10 !important;
+}
+
+.relative.h-screen {
+  z-index: 0;
+}
+

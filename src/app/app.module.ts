@@ -27,7 +27,6 @@ import { PropostaComponent } from './components/proposta/proposta.component';
         ClienteCadastrarComponent,
         ServicoListarComponent,
         ServicoCadastrarComponent,
-        MenuInicialComponent,
         PropostaComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
@@ -52,7 +51,8 @@ import { PropostaComponent } from './components/proposta/proposta.component';
         FormsModule,
         MatTableModule,
         MatCardModule,
-        MatToolbarModule 
+        MatToolbarModule,
+        MenuInicialComponent
         ],
    providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
 export class AppModule { }
