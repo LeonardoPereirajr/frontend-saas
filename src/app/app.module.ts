@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { PropostaComponent } from './components/proposta/proposta.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({ declarations: [
         AppComponent,
@@ -52,7 +55,10 @@ import { PropostaComponent } from './components/proposta/proposta.component';
         MatTableModule,
         MatCardModule,
         MatToolbarModule,
-        MenuInicialComponent
+        MenuInicialComponent,
+        HttpClientModule
         ],
-   providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()] })
+   providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    ] })
 export class AppModule { }
