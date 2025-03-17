@@ -1,171 +1,138 @@
-# FrontendSaas
+# **FrontendSaas**
 
-Projeto idealizado para servir de ferramenta de Gestão de clientes para minha esposa. No Readme do Backend esta mais explicado as funcionalidades até o momento.
+Projeto desenvolvido para servir como uma ferramenta de **Gestão de Clientes**, criado inicialmente para atender às necessidades da minha esposa.
 
-![image](https://github.com/user-attachments/assets/9bb70156-f1ae-4928-9b8e-ca339f757c42)
+Para informações mais detalhadas sobre as funcionalidades do sistema, consulte o **README do Backend**.
 
+![Imagem do Projeto](https://github.com/user-attachments/assets/9bb70156-f1ae-4928-9b8e-ca339f757c42)
 
+---
 
-Próximas Entregas
+## **🛠 Tecnologias Utilizadas**
 
-🔹 Cadastro de Usuários e Autenticação
+- **Angular CLI** (versão 18.2.13)
+- **TypeScript**
+- **Bootstrap / Tailwind CSS**
+- **MongoDB / Firebase** *(para persistência de dados)*
+- **API REST (Backend desenvolvido em Java - Spring Boot)**
 
-Criar login/logout com JWT
+---
 
-Implementar recuperação de senha
+## **📌 Funcionalidades Principais**
 
-Criar níveis de permissão (Admin, Usuário, Cliente)
+👉 **Gestão de Clientes**  
+👉 **Cadastro e gerenciamento de serviços**  
+👉 **Geração de propostas e orçamentos**  
+👉 **Sistema de notificações e alertas**  
+👉 **Kanban para controle de workflow**  
 
-🔹 Ajustes no Backend
+---
 
-Revisar CRUD de Clientes e Serviços
+## **📅 Roadmap de Desenvolvimento**
 
-Testes unitários iniciais
+### **🛡️ Mês 1 - Estruturação e Cadastros**
+- [ ] Implementar **Login/Logout** com **JWT**
+- [ ] Criar **recuperação de senha**
+- [ ] Definir **níveis de permissão** *(Admin, Usuário, Cliente)*
+- [ ] Revisar CRUD de **Clientes e Serviços**
+- [ ] Melhorar a UI/UX dos cadastros
+- [ ] Melhorar experiência no detalhamento de serviços
 
-🔹 Frontend - Melhorias Iniciais
+### **🟡 Mês 2 - Propostas e Orçamentos**
+- [ ] Criar **gerador de propostas** no Frontend
+- [ ] Implementar envio de propostas por **E-mail / WhatsApp**
+- [ ] Criar **tabela de propostas** com status
+- [ ] Criar **tela de cálculo de orçamento**
+- [ ] Adicionar **regras para serviços adicionais**
 
-Ajustes na UI dos cadastros
+### **🟠 Mês 3 - Agenda e Workflow**
+- [ ] Criar **Kanban para gestão de serviços**
+- [ ] Implementar **arrastar e soltar** (drag & drop)
+- [ ] Criar **notificações automáticas** ao mudar status
 
-Melhorar experiência do detalhamento de serviços
+### **🛠️ Mês 4 - Refinamento e Segurança**
+- [ ] Criar **pacotes personalizados** para serviços
+- [ ] Implementar **modo escuro (Dark Mode)**
+- [ ] Melhorar **performance e segurança** da API
 
-🟡 Mês 2 - Propostas e Orçamentos
+### **🟣 Mês 5 - Testes e Publicação**
+- [ ] Testar **fluxo completo do sistema**
+- [ ] Criar **documentação detalhada**
+- [ ] Configurar **deploy automatizado**
 
-🔹 Gerador de Propostas
+---
 
-Criar estrutura de proposta no Frontend
+## **🖥 Componentes Principais**
 
-Enviar proposta por e-mail e WhatsApp (API Twilio ou outra)
+### **Frontend**
+📌 `ClienteListarComponent` - Listagem de clientes  
+📌 `ClienteCadastrarComponent` - Cadastro de clientes  
+📌 `ServicoListarComponent` - Listagem de serviços  
+📌 `ServicoCadastrarComponent` - Cadastro de serviços  
+📌 `MenuInicialComponent` - Menu de navegação  
 
-Criar tabela de propostas com status
+### **Backend - Endpoints Disponíveis**
 
-🔹 Cálculo de Orçamentos
+#### **ClienteService**
+🔹 `GET /clientes` → Listar clientes  
+🔹 `POST /clientes` → Criar cliente  
+🔹 `PUT /clientes/{id}` → Atualizar cliente  
+🔹 `DELETE /clientes/{id}` → Deletar cliente  
 
-Criar tela de cálculo
+#### **ServicoService**
+🔹 `GET /servicos` → Listar serviços  
+🔹 `POST /servicos` → Criar serviço  
 
-Adicionar regras para serviços adicionais
+---
 
-Implementar validações
+## **⚙️ Como Executar o Projeto**
 
-🔹 Notificações
+### **🔹 Ambiente de Desenvolvimento**
 
-Criar sistema de notificações internas
+1️⃣ **Instale as dependências**  
+```bash
+npm install
+```
 
-Enviar alertas por e-mail para clientes
+2️⃣ **Inicie o servidor Angular**  
+```bash
+ng serve
+```
+👉 Acesse `http://localhost:4200/` no navegador.  
 
-🟠 Mês 3 - Agenda e Workflow
+### **🔹 Construção do Projeto**
+Para compilar o projeto para produção, execute:  
+```bash
+ng build
+```
+Os artefatos compilados ficarão armazenados no diretório `dist/`.  
 
-🔹 Implementação do Kanban
+---
 
-Criar movimentação entre status (Proposta, Orçamento Enviado, Produção, Concluído)
+## **🤖 Testes**
 
-Adicionar arrastar e soltar
+### **🔹 Testes Unitários**
+```bash
+ng test
+```
+Executa os testes unitários via **Karma**.  
 
-Enviar alertas quando um serviço mudar de status
+### **🔹 Testes End-to-End**
+```bash
+ng e2e
+```
+Executa testes e2e usando a ferramenta definida no projeto.  
 
-🔹 Melhorias no Backend
+---
 
-Ajustar API para manipular status
+## **📚 Documentação e Ajuda**
 
-Criar logs de movimentação
+Para mais informações sobre o **Angular CLI**, consulte a [documentação oficial](https://angular.io/cli).  
 
-🔹 Fila de Processamento
+Caso precise de suporte ou queira contribuir com o projeto, entre em contato! 🚀  
 
-Implementar RabbitMQ para envio de notificações e emails assíncronos
+---
 
-🔴 Mês 4 - Serviços Extras e Refinamento
-
-🔹 Serviços Adicionais
-
-Criar pacotes para Storymakers, Filmmakers e Assessoria
-
-Permitir configurações personalizadas para cada serviço
-
-🔹 Melhorias no Design
-
-Refinar UI/UX
-
-Adicionar Dark Mode
-
-🔹 Segurança e Otimização
-
-Implementar logs de auditoria
-
-Melhorar performance das consultas ao banco
-
-🟣 Mês 5 - Finalização e Testes
-
-🔹 Testes Finais
-
-Testar fluxo completo do sistema
-
-Corrigir bugs identificados
-
-🔹 Documentação
-
-Criar tutorial para novos usuários
-
-Documentar APIs e estrutura do código
-
-🔹 Publicação
-
-Configurar deploy automatizado
-
-Lançamento para usuários iniciais
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.13.
-
-Componentes principais:
-
-ClienteListarComponent
-
-ClienteCadastrarComponent
-
-ServicoListarComponent
-
-ServicoCadastrarComponent
-
-MenuInicialComponent
-
-The ClienteService has endpoints for managing clients:
-
-GET /clientes: List clients (used in ClienteListarComponent and ServicoCadastrarComponent).
-
-POST /clientes: Create a client (used in ClienteCadastrarComponent).
-
-PUT /clientes/{id}: Update a client (used in ClienteListarComponent).
-
-DELETE /clientes/{id}: Delete a client (used in ClienteListarComponent).
-
-
-The ServicoService is for handling services:
-
-GET /servicos: List services (used in ServicoListarComponent).
-
-POST /servicos: Create a service (used in `ServicoCadastrarComponent
-
-![DALL·E](https://github.com/user-attachments/assets/c57ed646-d8e2-4d30-87df-361f5bb6824a)
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help!
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### **📢 Status do Projeto**  
+💡 **Em desenvolvimento** – Contribuições são bem-vindas!  
 
