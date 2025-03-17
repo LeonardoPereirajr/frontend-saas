@@ -134,5 +134,5 @@ Caso precise de suporte ou queira contribuir com o projeto, entre em contato! �
 ---
 
 ### **📢 Status do Projeto**  
-💡 **Em desenvolvimento** – Contribuições são bem-vindas!  
+💡 **Em desenvolvimento**  
 
