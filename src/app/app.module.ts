@@ -24,6 +24,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({ declarations: [
         AppComponent,
         ClienteListarComponent,
