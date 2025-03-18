@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Servico } from '../../models/servico.model';
 import { ServicoService } from '../../services/servico.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-servico-listar',
@@ -17,21 +19,32 @@ export class ServicoListarComponent implements OnInit {
   isViewModalOpen = false;
   servicoSelecionado: Servico | null = null;
 
-  constructor(private servicoService: ServicoService, private router: Router) {}
+  constructor(private servicoService: ServicoService, private router: Router , private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.obterServicos();
-  }
-
-  obterServicos(): void {
     this.servicoService.listarTodos().subscribe(
       (dados) => {
-        this.servicos = dados;
+        console.log('Serviços recebidos:', dados);
+        this.servicos = dados; 
       },
       (erro) => {
-        console.error('❌ Erro ao buscar serviços:', erro);
+        console.error('Erro ao carregar os serviços:', erro);
       }
     );
+  }
+
+
+  obterServicos() {
+    this.http.get('http://localhost:8080/servicos').subscribe({
+      next: (response) => {
+        console.log('Sucesso:', response);
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error('Erro completo:', err);
+        console.log('Status:', err.status); 
+        console.log('Mensagem:', err.error);
+      }
+    });
   }
   
 

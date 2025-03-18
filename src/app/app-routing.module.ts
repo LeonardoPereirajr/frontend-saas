@@ -6,17 +6,29 @@ import { ServicoCadastrarComponent } from './components/servico-cadastrar/servic
 import { ServicoListarComponent } from './components/servico-listar/servico-listar.component';
 import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.component';
 import { PropostaComponent } from './components/proposta/proposta.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'clientes/listar', pathMatch: 'full' },
-  { path: 'home', component: MenuInicialComponent },
-  { path: 'clientes/listar', component: ClienteListarComponent },
-  { path: 'clientes/cadastrar', component: ClienteCadastrarComponent },
-  { path: 'servicos/cadastrar', component: ServicoCadastrarComponent },
-  { path: 'servicos/listar', component: ServicoListarComponent },
-  { path: 'proposta/:id', component: PropostaComponent },
-  { path: '', redirectTo: '/orcamento', pathMatch: 'full' }
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  { path: 'login', component: LoginComponent },
+
+  { path: 'home', component: MenuInicialComponent, canActivate: [AuthGuard] },
+
+  { path: 'clientes/listar', component: ClienteListarComponent, canActivate: [AuthGuard] },
+  { path: 'clientes/cadastrar', component: ClienteCadastrarComponent, canActivate: [AuthGuard] },
+
+  { path: 'servicos/cadastrar', component: ServicoCadastrarComponent, canActivate: [AuthGuard] },
+  { path: 'servicos/listar', component: ServicoListarComponent, canActivate: [AuthGuard] },
+
+  { path: 'proposta/:id', component: PropostaComponent, canActivate: [AuthGuard] },
+
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
