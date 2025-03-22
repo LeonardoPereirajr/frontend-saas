@@ -24,13 +24,32 @@ export class AuthService {
     );
   }
 
+  hasRole(requiredRoles: string[]): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+
+    const tokenData = this.parseJwt(token);
+    const roles = tokenData?.roles || [];
+    console.log('Token roles:', roles);
+    return requiredRoles.some(role => roles.includes(role));
+  }
+
+  isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const tokenData = this.parseJwt(token);
+      return tokenData && tokenData.roles && tokenData.roles.includes('ROLE_ADMIN');
+    }
+    return false;
+  }
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     if (!token) return false;
   
     const tokenData = this.parseJwt(token);
     if (tokenData.exp * 1000 < Date.now()) {
-      this.logout(); // Expirou? Remove o token e força logout.
+      this.logout(); 
       return false;
     }
   
@@ -44,8 +63,6 @@ export class AuthService {
       return null;
     }
   }
-
-  
 
   logout(): void {
     console.log('Deslogando...');
