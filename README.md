@@ -4,7 +4,10 @@ Projeto desenvolvido para servir como uma ferramenta de **Gestão de Clientes**,
 
 Para informações mais detalhadas sobre as funcionalidades do sistema, consulte o **README do Backend**.
 
-![Imagem do Projeto](https://github.com/user-attachments/assets/9bb70156-f1ae-4928-9b8e-ca339f757c42)
+![alt text](image.png)
+
+![alt text](image-1.png)
+
 
 ---
 

@@ -16,6 +16,11 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  ngOnInit(): void {
+    localStorage.removeItem('token');
+    console.log('Token removido do localStorage');
+  }
+
   login() {
     console.log('Tentando login com:', this.email, this.senha);
 

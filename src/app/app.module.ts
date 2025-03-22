@@ -23,6 +23,7 @@ import { PropostaComponent } from './components/proposta/proposta.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariosListarComponent } from './components/usuarios/usuarios-listar.component';
 
 
 @NgModule({ declarations: [
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
         ClienteCadastrarComponent,
         ServicoListarComponent,
         ServicoCadastrarComponent,
-        PropostaComponent
+        PropostaComponent,
+        UsuariosListarComponent,
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from '../dashboard/dashboard.component'; 
 import { Router, RouterModule  } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu-inicial',
@@ -21,8 +22,25 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class MenuInicialComponent {
   isMenuOpen = true; 
+  isAdmin = false;
 
-  constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
+  constructor(private router: Router, private cdRef: ChangeDetectorRef, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const tokenData = this.authService.parseJwt(token);
+      console.log('Token data:', tokenData);  
+  
+      if (tokenData && tokenData.roles && tokenData.roles.includes('ROLE_ADMIN')) {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }
+  }
+  
+
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen; 
@@ -32,5 +50,9 @@ export class MenuInicialComponent {
     this.router.navigate([route]).then(() => {
       this.cdRef.detectChanges(); 
     });
+  }
+  logout() {
+    this.authService.logout();  
+    this.router.navigate(['/login']); 
   }
 }

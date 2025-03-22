@@ -1,3 +1,4 @@
+import { Usuario } from './models/usuario.model';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteListarComponent } from './components/cliente-listar/cliente-listar.component';
@@ -8,6 +9,7 @@ import { MenuInicialComponent } from './components/menu-inicial/menu-inicial.com
 import { PropostaComponent } from './components/proposta/proposta.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UsuariosListarComponent } from './components/usuarios/usuarios-listar.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'clientes/listar', component: ClienteListarComponent, canActivate: [AuthGuard] },
   { path: 'clientes/cadastrar', component: ClienteCadastrarComponent, canActivate: [AuthGuard] },
 
+  { path: 'usuarios', component: UsuariosListarComponent, canActivate: [AuthGuard], data: { roles: ['ROLE_ADMIN'] } },  
   { path: 'servicos/cadastrar', component: ServicoCadastrarComponent, canActivate: [AuthGuard] },
   { path: 'servicos/listar', component: ServicoListarComponent, canActivate: [AuthGuard] },
 

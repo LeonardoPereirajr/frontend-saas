@@ -1,0 +1,110 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar (Menu Lateral Fixo) -->
+  <aside 
+    [ngClass]="{'w-64': isMenuOpen, 'w-24': !isMenuOpen}" 
+    class="shadow-md h-full flex flex-col fixed left-0 top-0 z-[100] transition-all duration-300 bg-gradient-to-t from-blue-500 to-blue-50">
+    
+    <div class="p-4 text-xl font-bold text-gray-700">
+      <img src="/assets/sansdata.png" alt="SansData" class="h-8">
+    </div>
+
+    <nav class="flex-1">
+      <ul class="space-y-2 p-4">
+        <li>
+          <a routerLink="/clientes/listar" 
+            class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+            <span class="material-icons">people</span>
+            <span>Lista de Clientes</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/servicos/listar" 
+            class="flex items-center space-x-3 text-gray-600 font-medium px-3 py-2 rounded-lg bg-gray-200">
+            <span class="material-icons">build</span>
+            <span>Lista de Serviços</span>
+          </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a routerLink="/usuarios/listar" 
+            class="flex items-center space-x-3 text-gray-600 hover:bg-gray-200 px-3 py-2 rounded-lg">
+            <span class="material-icons">settings</span>
+            <span>Gerenciar Usuários</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <div [ngClass]="{'ml-64': isMenuOpen, 'ml-16': !isMenuOpen}" class="flex-1 p-6">
+    <!-- Cabeçalho -->
+    <div class="flex justify-between items-center pb-4 border-b border-gray-300">
+      <a routerLink="/home" class="text-gray-600 hover:text-blue-600 mr-4 flex items-center">
+        <span class="material-icons text-2xl">home</span>
+      </a>
+      <h2 class="text-lg font-semibold text-gray-800">Lista de Usuários</h2>
+      <a routerLink="/usuarios/cadastrar" class="bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 flex items-center text-sm">
+        <span class="material-icons mr-2 text-base">add_circle</span> Adicionar Usuário
+      </a>
+    </div>
+
+    <!-- Tabela de Usuários -->
+    <div class="bg-white shadow-md rounded-lg overflow-auto max-h-[65vh] mt-3">
+      <table class="w-full text-sm text-left text-gray-600">
+        <thead class="bg-gray-200 text-gray-700">
+          <tr class="text-xs">
+            <th class="px-3 py-2">Nome</th>
+            <th class="px-3 py-2">Email</th>
+            <th class="px-3 py-2">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios" class="border-b hover:bg-gray-100 cursor-pointer text-xs">
+            <td class="px-3 py-2">{{ usuario.nome }}</td>
+            <td class="px-3 py-2">{{ usuario.email }}</td>
+            <td class="px-3 py-2">
+              <button (click)="editarUsuario(usuario)" class="text-blue-600">
+                Editar
+              </button>
+              <button (click)="excluirUsuario(usuario)" class="text-red-600 ml-2">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Modal de Edição -->
+<div *ngIf="isEditModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-lg relative">
+    <button (click)="fecharEditModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+      ✕
+    </button>
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Editar Usuário</h2>
+    <form (ngSubmit)="atualizarUsuario()">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome</label>
+        <input [(ngModel)]="usuarioEdit.nome" name="nome" type="text"
+          class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Email</label>
+        <input [(ngModel)]="usuarioEdit.email" name="email" type="email"
+          class="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300" required>
+      </div>
+      <div class="flex space-x-2 mt-4">
+        <button type="submit"
+          class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 flex items-center">
+          <span class="material-icons mr-2 text-sm">save</span> Salvar Alterações
+        </button>
+        <button type="button" (click)="fecharEditModal()"
+          class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 flex items-center">
+          <span class="material-icons mr-2 text-sm">close</span> Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</div>
