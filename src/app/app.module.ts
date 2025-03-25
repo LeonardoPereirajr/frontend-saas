@@ -25,7 +25,6 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosListarComponent } from './components/usuarios/usuarios-listar.component';
 
-
 @NgModule({ declarations: [
         AppComponent,
         ClienteListarComponent,
@@ -35,7 +34,7 @@ import { UsuariosListarComponent } from './components/usuarios/usuarios-listar.c
         PropostaComponent,
         UsuariosListarComponent,
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule, 
         BrowserAnimationsModule,
         MatTableModule,
         MatButtonModule,
@@ -59,7 +58,7 @@ import { UsuariosListarComponent } from './components/usuarios/usuarios-listar.c
         MatCardModule,
         MatToolbarModule,
         MenuInicialComponent,
-        HttpClientModule
+        HttpClientModule,
         ],
    providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync(),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
