@@ -23,6 +23,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MenuInicialComponent {
   isMenuOpen = true; 
   isAdmin = false;
+  isCadastroModalOpen: boolean = false;
 
   constructor(private router: Router, private cdRef: ChangeDetectorRef, private authService: AuthService) {}
 
@@ -40,7 +41,13 @@ export class MenuInicialComponent {
     }
   }
   
+  abrirCadastroModal() {
+    this.isCadastroModalOpen = true;
+  }
 
+  fecharCadastroModal() {
+    this.isCadastroModalOpen = false;
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen; 
