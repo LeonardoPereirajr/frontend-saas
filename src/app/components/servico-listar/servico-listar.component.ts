@@ -90,11 +90,6 @@ export class ServicoListarComponent implements OnInit {
     }
   }
   
-
-  // gerarProposta(servico: Servico): void {
-  //   window.open(`http://localhost:8080/api/pdf/proposta/${servico.id}`, '_blank');
-  // }  
-
   gerarProposta(servico: Servico): void {
     if (servico.id) {
       this.router.navigate(['/proposta', servico.id]);

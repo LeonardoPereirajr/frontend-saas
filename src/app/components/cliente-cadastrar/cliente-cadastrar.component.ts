@@ -28,7 +28,7 @@ export class ClienteCadastrarComponent implements AfterViewInit {
     },
   };
 
-  tipoPessoa: string = 'cpf'; // Default selection is CPF
+  tipoPessoa: string = 'cpf'; 
   private maskInstance: any;
   private cpfCnpjElement: HTMLInputElement;
   private telefoneMaskInstance: any;
@@ -46,15 +46,15 @@ export class ClienteCadastrarComponent implements AfterViewInit {
     private location: Location
   ) {}
 
-  // Método para atualizar a máscara com base na seleção do tipo
+
   atualizarMascara() {
     if (this.cpfCnpjElement) {
-      // Destruir a instância anterior da máscara se existir
+      
       if (this.maskInstance) {
         this.maskInstance.destroy();
       }
 
-      // Criar nova máscara baseada no tipo selecionado
+
       this.maskInstance = IMask(this.cpfCnpjElement, {
         mask: this.tipoPessoa === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00',
         lazy: false,
@@ -66,8 +66,8 @@ export class ClienteCadastrarComponent implements AfterViewInit {
   aplicarMascaraTelefone(elemento: HTMLInputElement): any {
     return IMask(elemento, {
       mask: [
-        { mask: '(00) 0000-0000' },  // Telefone fixo
-        { mask: '(00) 00000-0000' }  // Celular
+        { mask: '(00) 0000-0000' },  
+        { mask: '(00) 00000-0000' }  
       ],
       dispatch: function (appended: string, dynamicMasked: any) {
         const number = (dynamicMasked.value + appended).replace(/\D/g, '');
@@ -92,24 +92,21 @@ export class ClienteCadastrarComponent implements AfterViewInit {
     
     this.atualizarMascara();
     
-    // Aplicar máscara ao telefone principal
     if (this.telefoneElement) {
       this.telefoneMaskInstance = this.aplicarMascaraTelefone(this.telefoneElement);
     }
     
-    // Aplicar máscara ao telefone do contato
     if (this.contatoTelefoneElement) {
       this.contatoTelefoneMaskInstance = this.aplicarMascaraTelefone(this.contatoTelefoneElement);
     }
 
-    // Aplicar máscara ao CPF do contato
     if (this.contatoCpfElement) {
       this.contatoCpfMaskInstance = this.aplicarMascaraCpf(this.contatoCpfElement);
     }
   }
 
   ngOnDestroy() {
-    // Destruir todas as instâncias de máscara ao sair do componente
+   
     if (this.maskInstance) {
       this.maskInstance.destroy();
     }
@@ -147,12 +144,10 @@ export class ClienteCadastrarComponent implements AfterViewInit {
   aoSalvar() {
     this.limparMensagens();
 
-    // Remover a máscara antes de enviar para o servidor
     if (this.novoCliente.cpfCnpj) {
       this.novoCliente.cpfCnpj = this.novoCliente.cpfCnpj.replace(/[^\d]/g, '');
     }
     
-    // Remover máscara dos telefones
     if (this.novoCliente.telefone) {
       this.novoCliente.telefone = this.novoCliente.telefone.replace(/\D/g, '');
     }
@@ -160,7 +155,7 @@ export class ClienteCadastrarComponent implements AfterViewInit {
       this.novoCliente.contato.telefone = this.novoCliente.contato.telefone.replace(/\D/g, '');
     }
 
-    // Remover máscara do CPF do contato
+  
     if (this.novoCliente.contato?.cpf) {
       this.novoCliente.contato.cpf = this.novoCliente.contato.cpf.replace(/\D/g, '');
     }
